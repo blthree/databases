@@ -85,26 +85,26 @@ def test_aiopg_explicit_ssl():
 
 
 def test_aioodbc_pool_size():
-    backend = PostgresBackend("asyncpg+aioodbc://localhost/test_database1?min_size=1&max_size=20")
+    backend = PostgresBackend("MSSQLBackend+aioodbc://localhost/test_database1?min_size=1&max_size=20")
     kwargs = backend._get_connection_kwargs()
     assert kwargs["min_size"] == 1
     assert kwargs["max_size"] == 20
 
 
 def test_aioodbc_explicit_pool_size():
-    backend = PostgresBackend("asyncpg+aioodbc://localhost/test_database1", min_size=1, max_size=20)
+    backend = PostgresBackend("MSSQLBackend+aioodbc://localhost/test_database1", min_size=1, max_size=20)
     kwargs = backend._get_connection_kwargs()
     assert kwargs["min_size"] == 1
     assert kwargs["max_size"] == 20
 
 
 def test_aioodbc_ssl():
-    backend = PostgresBackend("asyncpg+aioodbc://localhost/test_database1?ssl=true")
+    backend = PostgresBackend("MSSQLBackend+aioodbc://localhost/test_database1?ssl=true")
     kwargs = backend._get_connection_kwargs()
     assert kwargs["ssl"] == True
 
 
 def test_aioodbc_explicit_ssl():
-    backend = PostgresBackend("asyncpg+aioodbc://localhost/test_database1", ssl=True)
+    backend = PostgresBackend("MSSQLBackend+aioodbc://localhost/test_database1", ssl=True)
     kwargs = backend._get_connection_kwargs()
     assert kwargs["ssl"] == True
