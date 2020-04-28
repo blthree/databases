@@ -85,7 +85,7 @@ def test_aiopg_explicit_ssl():
 
 
 def test_aioodbc_pool_size():
-    backend = MSSQLBackend("asyncpg+aioodbc://localhost/test_database1?min_size=1&max_size=20")
+    backend = PostgresBackend("asyncpg+aioodbc://localhost/test_database1?min_size=1&max_size=20")
     kwargs = backend._get_connection_kwargs()
     assert kwargs["min_size"] == 1
     assert kwargs["max_size"] == 20
