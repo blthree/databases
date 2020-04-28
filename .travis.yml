@@ -9,7 +9,7 @@ python:
     - "3.7"
 
 env:
-    - TEST_DATABASE_URLS="postgresql://localhost/test_database, mysql://localhost/test_database, sqlite:///test.db, asyncpg+aioodbc://localhost/test_database_aioodbc"
+    - TEST_DATABASE_URLS="postgresql://localhost/test_database, mysql://localhost/test_database, sqlite:///test.db, MSSQLBackend+aioodbc://localhost/test_database_aioodbc"
 
 services:
     - postgresql
