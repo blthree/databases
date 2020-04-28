@@ -53,7 +53,8 @@ setup(
         "postgresql": ["asyncpg", "psycopg2-binary"],
         "mysql": ["aiomysql", "pymysql"],
         "sqlite": ["aiosqlite"],
-        "postgresql+aiopg": ["aiopg"]
+        "postgresql+aiopg": ["aiopg"],
+        "mssql": ["aioodbc"]
     },
     classifiers=[
         "Development Status :: 3 - Alpha",
