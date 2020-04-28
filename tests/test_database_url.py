@@ -58,8 +58,8 @@ def test_replace_database_url_components():
     assert new.database == "/absolute/path_test"
     assert str(new) == "sqlite:////absolute/path_test"
 
-    u = DatabaseURL("aioodbc+asyncpg://localhost/test_database_aioodbc")
+    u = DatabaseURL("asyncpg+aioodbc://localhost/test_database_aioodbc")
     assert u.database == "test_database_aioodbc"
     new = u.replace(database="test_" + u.database)
     assert new.database == "test_test_database_aioodbc"
-    assert str(new) == "aioodbc+asyncpg://localhost/test_test_database_aioodbc"
+    assert str(new) == "asyncpg+aioodbc://localhost/test_test_database_aioodbc"

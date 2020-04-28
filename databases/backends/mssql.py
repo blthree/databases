@@ -21,8 +21,8 @@ class MSSQLBackend(DatabaseBackend):
         self._database_url = DatabaseURL(database_url)
         self._options = options
         assert self._database_url.options.get('driver'), 'driver parameter is not specified in database url'
-        pyodbc = importlib.import_module(f'sqlalchemy.dialects.{self._database_url.driver}.pyodbc')
-        assert pyodbc, f'Can not find pyodbc module from driver: {self._database_url.driver}'
+        pyodbc = importlib.import_module(f'sqlalchemy.dialects.{self._database_url.dialect}.pyodbc')
+        assert pyodbc, f'Can not find pyodbc module from driver: {self._database_url.dialect}'
         assert hasattr(pyodbc, 'dialect'), f'{self._database_url.driver} pyodbc does not have dialect defined.'
         fast_executemany: bool = self._database_url.options.get('fast_executemany', '').lower() in ['true', 'yes', '1',
             'y', 't']

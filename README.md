@@ -84,7 +84,7 @@ print('High Scores:', rows)
 
 # In order to work on MSSQL server on *nix systems, Microsoft ODBC driver for SQL server needs to be installed.
 # Database url for MSSQL server can be passed as following 
-db_url = 'aioodbc+mssql://db_user:db_password@localhost:port/db_name?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark'
+db_url = 'mssql+aioodbc://db_user:db_password@localhost:port/db_name?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark'
 ```
 
 Check out the documentation on [making database queries](https://www.encode.io/databases/database_queries/)
