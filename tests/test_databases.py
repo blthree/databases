@@ -46,12 +46,12 @@ articles = sqlalchemy.Table(
 )
 
 # Used to test JSON
-session = sqlalchemy.Table(
-    "session",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("data", sqlalchemy.JSON),
-)
+# session = sqlalchemy.Table(
+#     "session",
+#     metadata,
+#     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
+#     sqlalchemy.Column("data", sqlalchemy.JSON),
+# )
 
 # Used to test custom column types
 custom_date = sqlalchemy.Table(
