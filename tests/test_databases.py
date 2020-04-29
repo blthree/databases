@@ -82,6 +82,7 @@ def create_test_database():
             url = str(database_url.replace(driver=None))
         elif database_url.scheme == "mssql+aioodbc":
             url = str(database_url.replace(driver="pyodbc"))
+        print(url)
         engine = sqlalchemy.create_engine(url)
         metadata.create_all(engine)
 
