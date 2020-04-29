@@ -85,26 +85,26 @@ def test_aiopg_explicit_ssl():
 
 
 def test_aioodbc_pool_size():
-    backend = MSSQLBackend("postgresql+aioodbc://localhost/test_database1?driver=ODBC+for+PostgreSQL&min_size=1&max_size=20")
+    backend = MSSQLBackend("mssql+aioodbc://localhost/test_database1?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark&min_size=1&max_size=20")
     kwargs = backend._get_connection_kwargs()
     assert kwargs["min_size"] == 1
     assert kwargs["max_size"] == 20
 
 
 def test_aioodbc_explicit_pool_size():
-    backend = MSSQLBackend("postgresql+aioodbc://localhost/test_database1?driver=ODBC+for+PostgreSQL", min_size=1, max_size=20)
+    backend = MSSQLBackend("mssql+aioodbc://localhost/test_database1?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark", min_size=1, max_size=20)
     kwargs = backend._get_connection_kwargs()
     assert kwargs["min_size"] == 1
     assert kwargs["max_size"] == 20
 
 
 def test_aioodbc_ssl():
-    backend = MSSQLBackend("postgresql+aioodbc://localhost/test_database1?driver=ODBC+for+PostgreSQL&ssl=true")
+    backend = MSSQLBackend("mssql+aioodbc://localhost/test_database1?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark&ssl=true")
     kwargs = backend._get_connection_kwargs()
     assert kwargs["ssl"] == True
 
 
 def test_aioodbc_explicit_ssl():
-    backend = MSSQLBackend("postgresql+aioodbc://localhost/test_database1?driver=ODBC+for+PostgreSQL", ssl=True)
+    backend = MSSQLBackend("mssql+aioodbc://localhost/test_database1?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark", ssl=True)
     kwargs = backend._get_connection_kwargs()
     assert kwargs["ssl"] == True

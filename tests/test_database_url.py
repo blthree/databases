@@ -58,8 +58,8 @@ def test_replace_database_url_components():
     assert new.database == "/absolute/path_test"
     assert str(new) == "sqlite:////absolute/path_test"
 
-    u = DatabaseURL("MSSQLBackend+aioodbc://localhost/test_database_aioodbc?driver=ODBC+for+PostgreSQL")
-    assert u.database == "test_database_aioodbc"
+    u = DatabaseURL("mssql+aioodbc://localhost/test_database?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark")
+    assert u.database == "test_database"
     new = u.replace(database="test_" + u.database)
-    assert new.database == "test_test_database_aioodbc"
-    assert str(new) == "MSSQLBackend+aioodbc://localhost/test_test_database_aioodbc?driver=ODBC+for+PostgreSQL"
+    assert new.database == "test_test_database"
+    assert str(new) == "MSSQLBackend+aioodbc://localhost/test_test_database?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark"
