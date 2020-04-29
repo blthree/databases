@@ -9,7 +9,7 @@ python:
     - "3.7"
 
 env:
-    - TEST_DATABASE_URLS="mssql+aioodbc://sa:Password123@localhost/test_database?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark"
+    - TEST_DATABASE_URLS="mssql+aioodbc://sa:Password123@localhost/test_database?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark&max_size=40"
 
 services:
     - postgresql
