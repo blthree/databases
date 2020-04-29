@@ -102,9 +102,9 @@ class MSSQLConnection(ConnectionBackend):
     async def release(self) -> None:
         assert self._connection is not None, 'Connection is not acquired'
         assert self._database.pool is not None, 'DatabaseBackend is not running'
+        print("released a connection")
         await self._database.pool.release(self._connection)
         self._connection = None
-        print("released a connection")
 
     async def fetch_all(self, query: ClauseElement) -> typing.List[typing.Mapping]:
         assert self._connection is not None, 'Connection is not acquired'

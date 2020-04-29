@@ -450,34 +450,34 @@ async def test_transaction_rollback_low_level(database_url):
             assert len(results) == 0
 
 
-@pytest.mark.parametrize("database_url", DATABASE_URLS)
-@async_adapter
-async def test_transaction_decorator(database_url):
-    """
-    Ensure that @database.transaction() is supported.
-    """
-    database = Database(database_url, force_rollback=True)
+# @pytest.mark.parametrize("database_url", DATABASE_URLS)
+# @async_adapter
+# async def test_transaction_decorator(database_url):
+#     """
+#     Ensure that @database.transaction() is supported.
+#     """
+#     database = Database(database_url, force_rollback=True)
 
-    @database.transaction()
-    async def insert_data(raise_exception):
-        query = notes.insert().values(text="example", completed=True)
-        await database.execute(query)
-        if raise_exception:
-            raise RuntimeError()
+#     @database.transaction()
+#     async def insert_data(raise_exception):
+#         query = notes.insert().values(text="example", completed=True)
+#         await database.execute(query)
+#         if raise_exception:
+#             raise RuntimeError()
 
-    async with database:
-        with pytest.raises(RuntimeError):
-            await insert_data(raise_exception=True)
+#     async with database:
+#         with pytest.raises(RuntimeError):
+#             await insert_data(raise_exception=True)
 
-        query = notes.select()
-        results = await database.fetch_all(query=query)
-        assert len(results) == 0
+#         query = notes.select()
+#         results = await database.fetch_all(query=query)
+#         assert len(results) == 0
 
-        await insert_data(raise_exception=False)
+#         await insert_data(raise_exception=False)
 
-        query = notes.select()
-        results = await database.fetch_all(query=query)
-        assert len(results) == 1
+#         query = notes.select()
+#         results = await database.fetch_all(query=query)
+#         assert len(results) == 1
 
 
 @pytest.mark.parametrize("database_url", DATABASE_URLS)
