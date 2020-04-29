@@ -74,6 +74,7 @@ class MSSQLBackend(DatabaseBackend):
 
     async def disconnect(self) -> None:
         assert self._pool is not None, 'DatabaseBackend is not running'
+        print(f"Trying to close pool {len(self._pool._used)}")
         self._pool.close()
         await self._pool.wait_closed()
 
@@ -103,6 +104,7 @@ class MSSQLConnection(ConnectionBackend):
         assert self._database.pool is not None, 'DatabaseBackend is not running'
         await self._database.pool.release(self._connection)
         self._connection = None
+        print("released a connection")
 
     async def fetch_all(self, query: ClauseElement) -> typing.List[typing.Mapping]:
         assert self._connection is not None, 'Connection is not acquired'
