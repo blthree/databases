@@ -62,4 +62,4 @@ def test_replace_database_url_components():
     assert u.database == "test_database"
     new = u.replace(database="test_" + u.database)
     assert new.database == "test_test_database"
-    assert str(new) == "MSSQLBackend+aioodbc://localhost/test_test_database?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark"
+    assert str(new) == "mssql+aioodbc://localhost/test_test_database?driver=ODBC+Driver+17+for+SQL+Server&paramstyle=qmark"
