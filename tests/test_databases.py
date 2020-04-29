@@ -81,7 +81,7 @@ def create_test_database():
         elif database_url.scheme == "postgresql+aiopg":
             url = str(database_url.replace(driver=None))
         elif database_url.scheme == "mssql+aioodbc":
-            url = str(database_url.replace(dialect="pyodbc"))
+            url = str(database_url.replace(driver="pyodbc"))
         engine = sqlalchemy.create_engine(url)
         metadata.create_all(engine)
 
@@ -96,7 +96,7 @@ def create_test_database():
         elif database_url.scheme == "postgresql+aiopg":
             url = str(database_url.replace(driver=None))
         elif database_url.scheme == "mssql+aioodbc":
-            url = str(database_url.replace(dialect="pyodbc"))
+            url = str(database_url.replace(driver="pyodbc"))
         engine = sqlalchemy.create_engine(url)
         metadata.drop_all(engine)
 
